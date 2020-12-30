@@ -1,0 +1,11 @@
+Logged in as: _____
+
+Links:
+View Profile
+<%= link_to "Create a Post", new_post_path %>
+Search
+
+<% @posts.each do |post| %>
+    <%= post.title %><br>
+    <%= post.content %><br>
+<% end %>

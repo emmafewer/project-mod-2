@@ -20,3 +20,7 @@ end
 20.times do
     Pet.create(name:Faker::Name.first_name, age: 4, user_id: User.all.sample.id, species_id: Species.all.sample.id)
 end 
+
+5.times do
+    Post.create(title:Faker::Quote.singular_siegler, content:Faker::Quote.most_interesting_man_in_the_world, user_id: User.all.sample.id)
+end
