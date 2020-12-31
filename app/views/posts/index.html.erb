@@ -1,11 +1,30 @@
 Logged in as: _____
 
-Links:
-View Profile
-<%= link_to "Create a Post", new_post_path %>
-Search
+Links:<br>
+View Profile<br>
+<%= link_to "Create a Post", new_post_path %><br>
+<%= link_to "View Users", users_path %><br>
+
 
 <% @posts.each do |post| %>
-    <%= post.title %><br>
-    <%= post.content %><br>
+<div class="row">
+    <div class="col-sm-3">
+        <div class="well">
+           <p><%= post.user.name %></p>
+           <img src="bird.jpg" class="img-circle" height="55" width="55" alt="Avatar">
+        </div>
+    </div>
+    <div class="col-sm-9">
+          <div class="well">
+            <% if post.image %>
+                <p><%= image_tag post.image, class: "img-fluid" %></p>
+            <% end %>
+            <p><%= post.title %></p>
+            <p><%= post.content %></p>
+          </div>
+    </div>
+</div>
+ 
+
+
 <% end %>

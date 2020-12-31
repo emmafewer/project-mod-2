@@ -2,6 +2,9 @@ class PostsController < ApplicationController
 
     def index
         @posts = Post.all
+        if params[:user_id]
+            @user = User.where('name LIKE ?', "%#{params[:user_id]}%")
+        end
     end
 
     def show 

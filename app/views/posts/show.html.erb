@@ -1,2 +1,5 @@
 <%= @post.title %><br><br>
 <%= @post.content %><br><br>
+<% if @post.image %>
+    <%= image_tag @post.image %><br>
+<% end %>
