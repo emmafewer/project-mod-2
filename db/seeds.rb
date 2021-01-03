@@ -6,6 +6,7 @@ emma = User.create(name:'emma', username: 'efewer', bio: "hi, I'm emma.", city: 
 dave = User.create(name:'dave', username: 'dwisecar', bio: "hi, I'm dave.", city: 'Seattle, WA')
 adam = User.create(name:'adam')
 emiley = User.create(name:'emiley')
+ix = User.create(name:'ix')
 
 
 10.times do
