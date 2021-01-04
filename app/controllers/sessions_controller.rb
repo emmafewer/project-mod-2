@@ -17,3 +17,4 @@ class SessionsController < ApplicationController
     session.delete :username
   end
 end
+ 

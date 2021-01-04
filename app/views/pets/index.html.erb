@@ -1,5 +1,5 @@
 <% @pets.each do |pet| %>
-    <%= pet.name %><br>
+    <%= link_to pet.name, pet %><br>
     <%= pet.user.name %><br>
     <%= pet.species.name %><br>
 <% end %>
