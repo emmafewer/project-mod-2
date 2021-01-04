@@ -3,3 +3,8 @@
 <% if @post.image %>
     <%= image_tag @post.image %><br>
 <% end %>
+<%= render 'comments/form' %>
+
+<% @post.comments.each do |post| %>
+    <p><%= post.user.name %> said: <%= post.content %></p>
+<% end %>
