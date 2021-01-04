@@ -2,8 +2,15 @@
     <% @users.each do |user| %>
     <div class="col-sm-3">
         <div class="well">
-           <p><%= user.name %></p>
-           <img src="bird.jpg" class="img-circle" height="55" width="55" alt="Avatar">
+            <% if user.image %>
+              <%= image_tag user.image, class: "img-circle", height:"65", width:"65", alt:"Avatar"%>
+            <% end %>
+            <p><%= link_to user.name, user %></p>
+            <p><%= user.bio %></p>
+            <p>Number of pets: <%= user.pet_count %></p>
+            <% user.species_count.each do |k, v| %>  
+                    <p><%= k %>: <%= v %></p>
+            <% end %>
         </div>
     </div>
     <% end %>
