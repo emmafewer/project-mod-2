@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2020_12_31_205131) do
     t.string "city"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "image"
+    t.text "image"
   end
 
   add_foreign_key "comments", "posts"
