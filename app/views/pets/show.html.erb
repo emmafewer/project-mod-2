@@ -1,0 +1,9 @@
+<h3><%= @pet.name %></h3><br>
+<p>Age: <%= @pet.age %></p><br>
+<p>Breed: <%= @pet.breed %></p><br>
+<p>Hobbies: <%= @pet.hobbies %></p><br>
+<p>Species: <%= @pet.species.name %></p><br>
+<p>Owner: <%= @pet.user.name %></p><br><br>
+
+<%= button_to "Edit", edit_pet_path, method: :get %><br>
+<%= button_to "Delete", @pet, method: :delete %>

@@ -1,0 +1,25 @@
+<% if flash[:errors] %>
+    <% flash[:errors].each do |error| %>
+        <p><%= error %></p>
+    <% end %>
+<% end %>
+
+<%= form_with model: @pet do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <br><br>
+    <%= f.label :age %>
+    <%= f.number_field :age, in: 1...100 %>
+    <br><br>
+    <%= f.label :breed %>
+    <%= f.text_field :breed %>
+    <br><br>
+    <%= f.label :hobbies %>
+    <%= f.text_area :hobbies %>
+    <br><br>
+    <%= f.collection_select :user_id, @users, :id, :name %>
+    <br><br>
+    <%= f.collection_select :species_id, @species, :id, :name %>
+    <br><br>
+    <%= f.submit %>
+<% end %>
