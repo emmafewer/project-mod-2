@@ -2,6 +2,8 @@ class PostsController < ApplicationController
 
     def index
         @posts = Post.all
+        @comment = Comment.new
+        
         if params[:user_id]
             @user = User.where('name LIKE ?', "%#{params[:user_id]}%")
         end
@@ -9,6 +11,7 @@ class PostsController < ApplicationController
 
     def show 
         @post = Post.find(params[:id])
+        @comment = Comment.new
     end 
 
     def new

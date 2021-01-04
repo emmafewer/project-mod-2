@@ -13,6 +13,14 @@
             <% end %>
             <p><%= post.title %></p>
             <p><%= post.content %></p>
+            <br>
+            <%= form_with model: @comment do |f| %>
+                <%= f.text_area :content %>
+                <%= f.submit "Add Comment"%>
+            <% end %>
+            <% post.comments.each do |comment| %>
+                <p><%= comment.content %></p>
+            <% end %>
           </div>
     </div>
 </div>
