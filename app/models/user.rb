@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
     has_many :pets, :dependent => :destroy
     has_many :posts, :dependent => :destroy
     has_many :comments
@@ -20,6 +24,6 @@ class User < ApplicationRecord
     end
 
     def self.most_pets
-        User.all.max_by{|user| user.pets.size}.name
+        # User.all.max_by{|user| user.pets.size}.name
     end
 end

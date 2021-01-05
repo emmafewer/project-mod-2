@@ -3,15 +3,12 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments
   end
-  resources :users
+  devise_for :users
+  root to: "posts#index"
   resources :pets
   resources :species
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   
-  # get '/', to: 'posts#index', as: 'home'
-  get '/login' => 'sessions#new'
-  post '/login' => 'sessions#create'
-  post '/logout' => 'sessions#destroy'
 
   
 end
