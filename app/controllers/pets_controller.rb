@@ -34,7 +34,7 @@ class PetsController < ApplicationController
     end
 
     def update
-        @pet.update(pet_params)
+        @pet.update(pet_params) 
         if @pet.valid?
             redirect_to @pet
         else
