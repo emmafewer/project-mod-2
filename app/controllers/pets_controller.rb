@@ -9,18 +9,18 @@ class PetsController < ApplicationController
     end
 
     def new 
-        @pet = Pet.new
-        @users = User.all
+        @pet = Pet.new 
         @species = Species.all
     end
 
     def create
         # species = Species.find_or_create_by(name: params["species"]["name"])
-        @pet = Pet.create(pet_params)
-
+        @pet = Pet.new(pet_params)
+        @pet.user_id = current_user.id
         #I think after making sessions work, we can set user_id = session[:user_id] instead of a collection select
-        if @pet.valid?
-            redirect_to @pet
+        if @pet.valid? 
+            @pet.save
+            redirect_to pets_path
         else
             flash[:errors] = @pet.errors.full_messages
             redirect_to new_pet_path
@@ -28,7 +28,6 @@ class PetsController < ApplicationController
     end
 
     def edit 
-        @users = User.all
         @species = Species.all
     end
 
@@ -54,6 +53,6 @@ class PetsController < ApplicationController
     end
 
     def pet_params
-        params.require(:pet).permit(:name, :age, :breed, :hobbies, :user_id, :species_id)
+        params.require(:pet).permit(:name, :age, :breed, :hobbies, :species_id)
     end
 end

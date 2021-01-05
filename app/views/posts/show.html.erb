@@ -8,8 +8,7 @@
     <br>
 
     <%= bootstrap_form_for [@post, @comment], bootstrap: {layout: "horizontal"} do |f| %>
-        <%= f.text_area :content, placeholder: "Add a comment...", bootstrap: {label: "Comment"} %>
-        <%= f.collection_select :user_id, @users, :id, :name %>           
+        <%= f.text_area :content, placeholder: "Add a comment...", bootstrap: {label: "Comment"} %>         
         <%= f.submit "Post Comment", bootstrap: {layout: "vertical"}%>
     <% end %>
     <br><br>

@@ -7,5 +7,5 @@ class Pet < ApplicationRecord
   # accepts_nested_attributes_for :species
 
   validates_presence_of :name
-  validates :age, numericality: {greater_than: 0}
+  validates :age, numericality: {greater_than: 0} 
 end
