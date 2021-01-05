@@ -1,3 +1,4 @@
+
 <% @posts.each do |post| %>
 <div class="row">
     <div class="col-sm-3">
@@ -14,7 +15,11 @@
             <p><%= link_to post.title, post %></p>
             <p><%= post.content %></p>
             <br>
-            <%= render 'comment/form' %>
+            <%= form_for [post, @comment] do |f| %>
+                <%= f.text_area :content %>
+                <%= f.collection_select :user_id, @users, :id, :name %>              
+                <%= f.submit "Add Comment"%>
+            <% end %>
 
             <% post.comments.each do |comment| %>
                 <p><%= comment.user.name %> said: <%= comment.content %></p>

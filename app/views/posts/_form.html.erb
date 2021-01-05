@@ -1,10 +1,7 @@
-<%= form_with model: @post do |f| %>
+<%= bootstrap_form_with model: @post, bootstrap: { layout: "horizontal" } do |f| %>
     By: <%= f.collection_select :user_id, @users, :id, :name %>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-    <%= f.label :content %>
-    <%= f.text_area :content %>
-    <%= f.label :image %>
-    <%= f.text_field :image %>
-    <%= f.submit %>
+    <%= f.text_field :title, placeholder: "Add a Title..." %>
+    <%= f.text_area :content, placeholder: "Create a Post here..."  %>
+    <%= f.text_field :image, placeholder: "https://lh3.googleusercontent.com/XJQ2j0b74A...." %>
+    <%= f.submit 'Post' %>
 <% end %>
