@@ -6,4 +6,16 @@ class Post < ApplicationRecord
   validates_presence_of :title
   validates_presence_of :content
 
+  def self.most_popular
+      self.all.max_by{|post| post.likes}
+  end
+
+  def self.least_popular
+      self.all.min_by{|post| post.likes}
+  end 
+
+  def self.most_comments
+      self.all.max_by{|post| post.comments.size}
+  end  
+
 end

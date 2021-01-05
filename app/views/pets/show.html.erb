@@ -3,7 +3,7 @@
 <p>Breed: <%= @pet.breed %></p><br>
 <p>Hobbies: <%= @pet.hobbies %></p><br>
 <p>Species: <%= @pet.species.name %></p><br>
-<p>Owner: <%= @pet.user.name %></p><br><br>
+<p>Owner: <%= link_to @pet.user.name, @pet.user %></p><br><br>
 
 <%= button_to "Edit", edit_pet_path, method: :get %><br>
 <%= button_to "Delete", @pet, method: :delete %>
