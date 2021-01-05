@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
     before_action :set_post, only: [:show, :edit, :update, :destroy]
+
     layout "post"
 
     def index
@@ -8,7 +9,7 @@ class PostsController < ApplicationController
             @user = User.where('name LIKE ?', "%#{params[:user_id]}%")
         end
         @users = User.all
-        @comment = Comment.new
+        @comment = Comment.new 
     end
 
     def show 

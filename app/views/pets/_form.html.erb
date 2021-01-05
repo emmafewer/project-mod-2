@@ -17,8 +17,6 @@
     <%= f.label :hobbies %>
     <%= f.text_area :hobbies %>
     <br><br>
-    <%= f.collection_select :user_id, @users, :id, :name %>
-    <br><br>
     <%= f.collection_select :species_id, @species, :id, :name%>
     <%#= fields_for :species do |ff| %>
         <%#= ff.text_field :name %>

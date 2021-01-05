@@ -13,4 +13,5 @@ class Pet < ApplicationRecord
   def self.youngest
     self.all.min_by{|pet| pet.age}
   end
+
 end

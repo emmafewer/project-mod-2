@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     def create
         @user = User.create(user_params)
         redirect_to @user
-    end
+    end 
 
     def update 
         @user.update(user_params)
@@ -33,10 +33,10 @@ class UsersController < ApplicationController
     private
 
     def set_user
-        @user = User.find(params[:id])
+        @user = current_user
     end
 
     def user_params
-        params.require(:user).permit(:username, :name, :bio, :image)
+        params.require(:user).permit(:name, :bio, :image)
     end
 end

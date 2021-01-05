@@ -3,7 +3,13 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments
   end
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => "users/registrations"}
+
+  devise_scope :user do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+    get '/user/:id', to: 'users#show', as: 'show_user'
+  end
+
   root to: "posts#index"
   resources :pets
   resources :species

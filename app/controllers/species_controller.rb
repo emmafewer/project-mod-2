@@ -4,7 +4,7 @@ class SpeciesController < ApplicationController
     end
 
     def create
-        @species = Species.create(species_params)
+        @species = Species.create(species_params) 
     end
 
     private

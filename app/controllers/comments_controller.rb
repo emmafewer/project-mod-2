@@ -4,14 +4,11 @@ class CommentsController < ApplicationController
         @comment = Comment.new
     end
 
-    def create
+    def create 
         @comment = Comment.new(comment_params)
-        if @comment.valid?
-            @comment.post_id = params[:post_id]
-            @comment.save
-        else
-            flash[:errors] = @comment.errors.full_messages
-        end
+        @comment.post_id = params[:post_id]
+        @comment.user_id = current_user.id
+        @comment.save
         redirect_to posts_path
     end
 
@@ -19,7 +16,8 @@ class CommentsController < ApplicationController
     private
 
     def comment_params
-        params.require(:comment).permit(:content, :user_id)
+        params.require(:comment).permit(:content)
     end
 
 end
+ 
