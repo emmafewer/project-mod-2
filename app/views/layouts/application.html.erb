@@ -11,7 +11,7 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-     
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <style>    
       /* Set black background color, white text and some padding */
       footer {
@@ -76,7 +76,7 @@
         <div class="col-sm-12">
           <div class="panel panel-default text-left">
             <div class="panel-body">
-              <%= link_to "Create Post", new_post_path %>
+              <%= button_to "Create Post", new_post_path, method: :get %>
             </div>
           </div>
         </div>

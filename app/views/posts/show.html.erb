@@ -1,10 +1,30 @@
-<%= @post.title %><br><br>
-<%= @post.content %><br><br>
-<% if @post.image %>
-    <%= image_tag @post.image %><br>
-<% end %>
-<%= render 'comments/form' %>
+<div class="col-sm-12">
+    <div class="well">
+    <% if @post.image %>
+        <p><%= image_tag @post.image, class: "img-fluid" %></p>
+    <% end %>
+    <p><%= @post.title %></p>
+    <p><%= @post.content %></p>
+    <br>
+    <%= if flash[:errors] %>
+        <% flash[:errors].each do |error|%>
+            <% error %>
+        <% end %>
+    <% end %>
+    <%= bootstrap_form_for [@post, @comment], bootstrap: {layout: "horizontal"} do |f| %>
+        <%= f.text_area :content, placeholder: "Add a comment...", bootstrap: {label: "Comment"} %>
+        <%= f.collection_select :user_id, @users, :id, :name %>           
+        <%= f.submit "Post Comment", bootstrap: {layout: "vertical"}%>
+    <% end %>
+    <br><br>
+        <h4>Comments</h4>
+        <% @post.comments.each do |comment| %>
+        <div class="well well-sm">
+            <p><%= comment.user.name %> said: <%= comment.content %></p>
+        </div>
+        <% end %>
+    </div>
+</div>
 
-<% @post.comments.each do |post| %>
-    <p><%= post.user.name %> said: <%= post.content %></p>
-<% end %>
+<%= button_to "Edit Post", edit_post_path, method: :get %><br>
+<%= button_to "Delete Post", @post, method: :delete %><br>

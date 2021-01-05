@@ -6,9 +6,12 @@ class CommentsController < ApplicationController
 
     def create
         @comment = Comment.new(comment_params)
-        @comment.post_id = params[:post_id]
-        @comment.save
-        #redirect_to post_path(@comment.post) if we want to redirect to the post show page
+        if @comment.valid?
+            @comment.post_id = params[:post_id]
+            @comment.save
+        else
+            flash[:errors] = @comment.errors.full_messages
+        end
         redirect_to posts_path
     end
 
