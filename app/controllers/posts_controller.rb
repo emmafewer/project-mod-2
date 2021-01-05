@@ -2,16 +2,18 @@ class PostsController < ApplicationController
 
     def index
         @posts = Post.all
-        @comment = Comment.new
-        
         if params[:user_id]
             @user = User.where('name LIKE ?', "%#{params[:user_id]}%")
         end
+        @users = User.all
+        @comment = Comment.new
     end
 
     def show 
         @post = Post.find(params[:id])
+        @users = User.all
         @comment = Comment.new
+        @comment.post_id = @post.id
     end 
 
     def new
@@ -20,14 +22,16 @@ class PostsController < ApplicationController
     end
 
     def create
-        @post = Post.create(post_params)
+        @post = Post.new(post_params)
+        @post.likes = 0
+        @post.save
         redirect_to posts_path
     end
 
     private 
 
     def post_params
-        params.require(:post).permit(:title, :content, :image, :likes, :user_id)
+        params.require(:post).permit(:title, :content, :image, :user_id)
     end
 end
 

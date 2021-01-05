@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :comments
-  resources :posts
+  resources :posts do
+    resources :comments
+  end
   resources :users
   resources :pets
   resources :species
@@ -10,4 +12,6 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
+
+  
 end
