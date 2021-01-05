@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
     before_action :authenticate_user!
 
 
+
     # def oldest_pet
     #     @pet = Pet.all.max_by{|pet| pet.age}
     # end
