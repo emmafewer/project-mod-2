@@ -24,8 +24,13 @@ class PostsController < ApplicationController
     def create
         @post = Post.new(post_params)
         @post.likes = 0
-        @post.save
-        redirect_to posts_path
+        if @post.valid?
+            @post.save
+            redirect_to posts_path
+        else
+            flash[:errors] = @post.errors.full_messages
+            redirect_to new_post_path
+        end
     end
 
     def edit
