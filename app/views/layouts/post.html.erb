@@ -64,9 +64,37 @@
   
 <div class="container text-center">    
   <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-3 well">
+      <div class="well">
+        <img src="https://ichef.bbci.co.uk/news/1024/cpsprodpb/43D8/production/_111686371_pic1.png" class="img-circle" height="65" width="65" alt="Avatar">
+        <p><a href="/users/session[:user_id]/">My Profile</a></p>
+          <p>Users</p>
+          <p>Pets</p>
+          <p>About</p>
+      </div>
+      <div class="alert alert-info fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+        <p><strong>Ey!</strong></p>
+        You haven't posted in x days.. Post now!
+      </div>
+      <p>Show fun stats</p>
+      <p><%= User.most_pets %></p>
+      <p><a href="#">Link to something else fun</a></p>
+    </div>
+    <div class="col-sm-9">
+    
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="panel panel-default text-left">
+            <div class="panel-body">
+              <%= button_to "Create Post", new_post_path, method: :get %>
+            </div>
+          </div>
+        </div>
+      </div>
           <%= yield %>     
     </div>
+
   </div>
 </div>
 

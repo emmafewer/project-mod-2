@@ -24,6 +24,7 @@ class PostsController < ApplicationController
     def create
         @post = Post.new(post_params)
         @post.likes = 0
+        @post.user_id = current_user.id
         if @post.valid?
             @post.save
             redirect_to posts_path
@@ -59,7 +60,7 @@ class PostsController < ApplicationController
     end
 
     def post_params
-        params.require(:post).permit(:title, :content, :image, :user_id)
+        params.require(:post).permit(:title, :content, :image)
     end
 end
 
