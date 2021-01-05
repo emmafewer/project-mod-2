@@ -24,6 +24,23 @@ class User < ApplicationRecord
     end
 
     def self.most_pets
-        # User.all.max_by{|user| user.pets.size}.name
+        self.all.max_by{|user| user.pets.size}
     end
+
+    # def post_alert_criteria
+
+    # end
+
+    def last_post
+        self.posts.last.created_at.strftime('%B %d %Y')
+    end
+
+    def no_pet
+        self.pets.empty?
+    end
+
+    def complete_profile
+        self.name.empty? || self.bio.empty? || self.image.empty?
+    end
+
 end

@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
     before_action :set_post, only: [:show, :edit, :update, :destroy]
-    layout 'post' 
+
+    layout "post"
+
     def index
         @posts = Post.all
         if params[:user_id]
