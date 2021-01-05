@@ -7,12 +7,6 @@ class User < ApplicationRecord
         self.pets.size
     end
 
-    def species 
-        self.pets.each do |pet|
-            pet.species.name
-        end
-    end
-
     def species_count
         counts = Hash.new
         self.pets.each do |pet|
@@ -23,5 +17,9 @@ class User < ApplicationRecord
             end
         end
         counts
+    end
+
+    def self.most_pets
+        User.all.max_by{|user| user.pets.size}.name
     end
 end
