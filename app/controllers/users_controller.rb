@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    layout "non_post"
     def index
         @users = User.all
     end 

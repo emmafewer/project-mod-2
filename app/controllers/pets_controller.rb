@@ -1,6 +1,6 @@
 class PetsController < ApplicationController
     before_action :set_pet, only: [:show, :edit, :update, :destroy]
-
+    layout "non_post"
     def index
         @pets = Pet.all
     end
@@ -12,10 +12,13 @@ class PetsController < ApplicationController
         @pet = Pet.new
         @users = User.all
         @species = Species.all
+        # @spec_name = @pet.species.new
     end
 
     def create
+        species = Species.find_or_create_by(name: params["pet"]["species"]["name"])
         @pet = Pet.create(pet_params)
+        
         #I think after making sessions work, we can set user_id = session[:user_id] instead of a collection select
         if @pet.valid?
             redirect_to @pet
@@ -52,6 +55,6 @@ class PetsController < ApplicationController
     end
 
     def pet_params
-        params.require(:pet).permit(:name, :age, :breed, :hobbies, :species_id, :user_id)
+        params.require(:pet).permit(:name, :age, :breed, :hobbies, :species_id, :user_id, :species => [:name])
     end
 end
