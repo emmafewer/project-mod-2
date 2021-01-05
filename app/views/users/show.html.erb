@@ -1,17 +1,54 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="well">
-            <% if @user.image %>
-              <%= image_tag @user.image, class: "img-circle", height:"65", width:"65", alt:"Avatar"%>
-            <% end %>
-            <p><%= @user.name %></p>
-            <p><%= @user.username %></p>
-            <p><%= @user.bio %></p>
-            <% @user.pets.each do |pet| %>
+            <div class="col-sm-4">
+                <% if @user.image %>
+                    <%= image_tag @user.image, class: "img-circle", height:"65", width:"65", alt:"Avatar"%>
+                <% end %>
+                <h2><%= @user.name %></h2>
+                <h5><%= @user.username %></h5>
+                <div class="d-flex justify-content-between">
+                    <span class="btn btn-primary">
+                        <%= link_to 'Add Pet', new_pet_path, :class => "btn-primary" %> 
+                    </span>
+                    <span class="btn btn-info">
+                        <%= link_to "Edit", edit_user_path, method: :get, :class => "btn-info" %>
+                    </span>
+                    <span class="btn btn-danger">
+                        <%= link_to "Delete", @user, method: :delete, :class => "btn-danger" %>
+                    </span>
+                </div>
+            </div>
+            <h5>Bio: <%= @user.bio %></h5>
+            Pets: <% @user.pets.each do |pet| %>
                 <p><%= link_to pet.name, pet %></p>
             <% end %>
         </div>
     </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-default text-left">
+        <div class="panel-body">
+            <p contenteditable="true">Create Post</p>
+            <button type="button" class="btn btn-default btn-sm">
+                Post
+            </button>     
+        </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="well">
+            <% @user.posts.each do |post| %>
+                <%= post.image %>
+                <%= post.content %>
+            <% end %>
+        </div>
+    </div>        
 </div>
 
 

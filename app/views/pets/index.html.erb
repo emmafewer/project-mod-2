@@ -1,5 +1,14 @@
-<% @pets.each do |pet| %>
-    <%= link_to pet.name, pet %><br>
-    <%= pet.user.name %><br>
-    <%= pet.species.name %><br>
-<% end %>
+<h1> Pets! </h1>
+<div class="row">
+    <% @pets.each do |pet| %>
+    <div class="col-sm-4">
+        <div class="well">
+            <p>Name: <%= link_to pet.name, pet %></p>
+            <p>Species: <%= pet.species.name %></p>
+            <p>Age: <%= pet.age %></p>
+            <p>Owner: <%= link_to pet.user.name, pet.user %></p>
+        </div>
+    </div>
+    <% end %>
+
+</div>
