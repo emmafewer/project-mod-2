@@ -17,4 +17,8 @@ class Post < ApplicationRecord
       self.all.max_by{|post| post.comments.size}
   end  
 
+  def self.sorted_by_create_time
+    self.all.order(created_at: :desc)
+  end
+
 end

@@ -33,15 +33,14 @@
       <%= link_to "PetBook", posts_path, class: "navbar-brand"%>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
-
       <% if user_signed_in? %>
-        <%= current_user.email %>
-      <ul>
-          <li><%= link_to 'Profile', edit_user_registration_path, :class => "btn-default"%></li>
-          <li><%= link_to 'Log out', destroy_user_session_path, method: :delete, :class => "btn-default" %></li>
+        <div class="navbar-brand">      
+          <h5>Welcome, <%= current_user.name %></h5>
+        </div>
       <% else %>
-          <li><%= link_to 'Log In', new_user_session_path, :class => "btn-default" %></li>
-          <li><%= link_to 'Sign Up', new_user_registration_path, :class => "btn-default" %></li>
+        <ul>
+          <li><a href="/users/sign_in"><span class="glyphicon glyphicon-log-in"></span> Log in</a></li>
+          <li><a href="/users/sign_up"><span class="glyphicon glyphicon-user"></span> Sign up</a></li>
       <% end %>
 
       <form class="navbar-form navbar-right" role="search">
