@@ -1,42 +1,35 @@
 <div class="row"> 
     <div class="col-sm-12">
-        <div class="well">
-            <div class="col-sm-4">
+        <div class="well well-lg">
+            <div class="col-sm-12">
                 <% if @user.image %>
                     <%= image_tag @user.image, class: "img-circle", height:"65", width:"65", alt:"Avatar"%>
                 <% end %>
                 <h2><%= @user.name %></h2>
                 <h5><%= @user.username %></h5>
-                <div class="d-flex justify-content-between">
-                    <span class="btn btn-primary">
-                        <%= link_to 'Add Pet', new_pet_path, :class => "btn-primary" %> 
-                    </span>
-                    <span class="btn btn-info">
-                        <%= link_to "Edit Or Delete Profile", edit_user_registration_path, method: :get, :class => "btn-info" %>
-                    </span>
-
-                </div>
+                <% if @user.id == current_user.id %>
+                    <div class="d-flex justify-content-between">
+                        <span class="btn btn-primary">
+                            <%= link_to 'Create Post', new_post_path, :class => "btn-primary" %> 
+                        </span>
+                        <span class="btn btn-info">
+                            <%= link_to 'Add Pet', new_pet_path, :class => "btn-info" %> 
+                        </span>
+                        <span class="btn btn-warning">
+                            <%= link_to "Edit Or Delete Profile", edit_user_registration_path, method: :get, :class => "btn-warning" %>
+                        </span><br><br>
+                    </div>
+                <% end %>
             </div>
-            <h5>Bio: <%= @user.bio %></h5>
+            
+            <h5>Bio: <%= @user.bio %></h5><br>
             Pets: <% @user.pets.each do |pet| %>
                 <p><%= link_to pet.name, pet %></p>
-            <% end %>
+            <% end %><br>
         </div>
     </div>
 </div>
 
-<div class="row">
-    <div class="col-sm-12">
-        <div class="panel panel-default text-left">
-        <div class="panel-body">
-            <p contenteditable="true">Create Post</p>
-            <button type="button" class="btn btn-default btn-sm">
-                Post
-            </button>     
-        </div>
-        </div>
-    </div>
-</div>
 
 <div class="row">
     <div class="col-sm-12">

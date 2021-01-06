@@ -2,6 +2,6 @@
     By: <%#= f.collection_select :user_id, @users, :id, :name %>
     <%= f.text_field :title, placeholder: "Add a Title..." %>
     <%= f.text_area :content, placeholder: "Create a Post here..."  %>
-    <%= f.text_field :image, placeholder: "https://lh3.googleusercontent.com/XJQ2j0b74A...." %>
+    <%= f.url_field :image, placeholder: "https://lh3.googleusercontent.com/XJQ2j0b74A...." %>
     <%= f.submit 'Post' %>
 <% end %> 

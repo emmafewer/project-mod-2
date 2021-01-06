@@ -3,8 +3,10 @@
 <div class="row">
     <div class="col-sm-3">
         <div class="well">
-           <p><%= post.user.name %></p>
-           <img src=post.user.image class="img-circle" height="55" width="55" alt="Avatar">
+           <p><%= link_to post.user.name, show_user_path(post.user) %></p>
+            <% if post.user.image %>
+                <%= image_tag post.user.image, class: "img-circle", height:"100", width:"100", alt:"Avatar"%>
+            <% end %>
         </div>
     </div>
     <div class="col-sm-9">
@@ -20,12 +22,18 @@
                 <%= f.submit "Post Comment", bootstrap: {layout: "vertical"}%>
             <% end %>
             <br><br>
-                <h4>Comments</h4>
-                <% post.comments.each do |comment| %>
+
+            <%= button_to "Like", add_likes_path(post), :method => :patch, :class => "btn-info"  %>
+            <br>
+            <h5>Likes: <%= post.likes %></h5><br>
+            
+            <h4>Comments</h4>
+            <% post.comments.each do |comment| %>
                 <div class="well well-sm">
                     <p><%= comment.user.name %> said: <%= comment.content %></p>
                 </div>
-                <% end %>
+            <% end %>
+
           </div>
     </div>
 </div>

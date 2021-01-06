@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments
   end
+  patch '/posts/:id/add_likes', to: 'posts#add_likes', as:'add_likes'
+  
   devise_for :users, :controllers => {:registrations => "users/registrations"}
 
   devise_scope :user do

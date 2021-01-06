@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :set_user, only: [:show, :edit, :update, :destroy]
+    before_action :set_user, only: [:edit, :update, :destroy]
     layout "non_post"
 
     def index
@@ -7,13 +7,14 @@ class UsersController < ApplicationController
     end 
 
     def show
+        @user = User.find(params[:id])
     end 
 
     def new
         @user = User.new
     end 
 
-    def edit
+    def edit 
     end
 
     def create
