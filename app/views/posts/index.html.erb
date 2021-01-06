@@ -14,7 +14,6 @@
             <% if post.image %>
                 <p><%= image_tag post.image, class: "img-fluid" %></p>
             <% end %>
-            <p><%= link_to post.title, post %></p>
             <p><%= post.content %></p>
             <br>
             <%= bootstrap_form_for [post, @comment], bootstrap: {layout: "horizontal"} do |f| %>

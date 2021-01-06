@@ -14,7 +14,7 @@ class Pet < ApplicationRecord
     self.all.min_by{|pet| pet.age}
   end
 
-  def self.most_common_name
+  def self.most_common_name 
     self.all.max_by{|pet| pet.name}
   end
 
