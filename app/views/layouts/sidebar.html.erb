@@ -30,6 +30,7 @@
         You haven't posted since <%= current_user.last_post %> .. Post now!
     </div>
     <% end %>
+    <% if !Pet.all.empty? %>
     <h5>Did you know?!</h5>
     <p><%= link_to Pet.oldest.name, pet_path(Pet.oldest) %> is the oldest pet at <%= Pet.oldest.age %>!</p>
     <p><%= link_to Pet.youngest.name, pet_path(Pet.youngest) %> is the youngest pet at <%= Pet.youngest.age %>!</p>
@@ -44,4 +45,5 @@
     <p>Checkout the <%= link_to "most popular post", post_path(Post.most_popular) %></p>
     <p>Give <%= link_to "this post", post_path(Post.least_popular) %> some love!</p>
     <p>Get in on <%= link_to "this convo!", post_path(Post.most_comments) %></p>
+    <% end %>
 </div>
