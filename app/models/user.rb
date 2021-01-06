@@ -27,9 +27,13 @@ class User < ApplicationRecord
         self.all.max_by{|user| user.pets.size}
     end
 
-    # def post_alert_criteria
-
-    # end
+    def post_alert_criteria
+        if self.posts.count != 0
+            self.posts.last.created_at.strftime('%d').to_i - Time.now.strftime('%d').to_i
+        else  
+            0
+        end
+    end
 
     def last_post
         self.posts.last.created_at.strftime('%B %d %Y')

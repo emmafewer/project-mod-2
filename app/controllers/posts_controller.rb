@@ -16,6 +16,7 @@ class PostsController < ApplicationController
         @users = User.all
         @comment = Comment.new
         @comment.post_id = @post.id
+        byebug
     end 
 
     def new
