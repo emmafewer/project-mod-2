@@ -29,8 +29,20 @@ class Pet < ApplicationRecord
     self.all.max_by{|pet| pet.breed}
   end
 
-  def birthday
+  # def birthday
 
+  # end
+
+  def self.most_unique_species
+    Pet.all.min_by{|pet| pet.species.name}
+  end
+
+  def self.most_common_species
+    Pet.all.max_by{|pet| pet.species.name}
+  end
+
+  def self.most_common_species_count
+    Pet.all.count{|pet| pet.species.name == Pet.most_common_species.species.name}
   end
 
 end
