@@ -4,7 +4,7 @@ class PostsController < ApplicationController
     layout "post"
 
     def index
-        @posts = Post.all
+        @posts = Post.sorted_by_create_time
         if params[:user_id]
             @user = User.where('name LIKE ?', "%#{params[:user_id]}%")
         end
