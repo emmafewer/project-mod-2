@@ -6,7 +6,6 @@
                     <%= image_tag @user.image, class: "img-circle", height:"65", width:"65", alt:"Avatar"%>
                 <% end %>
                 <h2><%= @user.name %></h2>
-                <h5><%= @user.username %></h5>
                 <% if @user.id == current_user.id %>
                     <div class="d-flex justify-content-between">
                         <span class="btn btn-primary">
