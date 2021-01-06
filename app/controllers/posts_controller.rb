@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-    before_action :set_post, only: [:show, :edit, :update, :destroy]
+    before_action :set_post, only: [:show, :edit, :update, :destroy, :add_likes]
 
     layout "post"
 
@@ -49,6 +49,11 @@ class PostsController < ApplicationController
             flash[:errors] = @post.errors.full_messages
             redirect_to edit_post_path
         end
+    end
+
+    def add_likes
+        @post.update(likes: @post.likes + 1)
+        redirect_to posts_path
     end
 
     def destroy

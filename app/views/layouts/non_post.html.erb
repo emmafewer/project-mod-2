@@ -44,7 +44,7 @@
         </div>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Log-out</a></li>
+        <li><a href="/users/sign_out"><span class="glyphicon glyphicon-log-out"></span> Log-out</a></li>
       </ul>
     </div>
   </div>
@@ -52,10 +52,12 @@
 <div class="container text-center">    
   <div class="row">  
     <div class="col-sm-3 well">
+
       <%= render template: "layouts/sidebar" %>
 
       <div class="col-sm-9">
             <%= yield %>     
+
       </div>
     </div>
   </div>
