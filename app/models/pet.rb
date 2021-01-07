@@ -49,4 +49,9 @@ class Pet < ApplicationRecord
     self.birthdate.to_formatted_s(:long_ordinal)
   end
 
+  def self.birthdays_this_month
+    pets_with_birthdays = Pet.all.select {|pet| pet.birthdate }
+    pets_with_birthdays.select {|pet|pet.birthdate.month == DateTime.now.month}.sort_by {|pet|pet.birthdate.day}
+  end
+
 end
