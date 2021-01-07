@@ -3,10 +3,16 @@
     <p><%= image_tag @pet.image, class: "img-fluid" %></p>
 <% end %>
 <p>Age: <%= @pet.age %></p><br>
-<p>Breed: <%= @pet.breed %></p><br>
-<p>Hobbies: <%= @pet.hobbies %></p><br>
+<% if @pet.breed %>
+    <p>Breed: <%= @pet.breed %></p><br>
+<% end %>
+<% if @pet.hobbies %>
+    <p>Hobbies: <%= @pet.hobbies %></p><br>
+<% end %>
 <p>Species: <%= @pet.species.name %></p><br>
-<p>Birthday: <%= @pet.birthday_formatted %></p><br>
+<% if @pet.birthdate %>
+    <p>Birthday: <%= @pet.birthday_formatted %></p><br>
+<% end %>
 <p>Owner: <%= link_to @pet.user.name, @pet.user %></p><br><br>
 
 <% if @pet.user.id == current_user.id %>
