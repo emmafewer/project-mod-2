@@ -1,21 +1,23 @@
-<h3><%= @pet.name %></h3><br>
-<% if @pet.image %>
-    <p><%= image_tag @pet.image, class: "img-fluid" %></p>
-<% end %>
-<p>Age: <%= @pet.age %></p><br>
-<% if @pet.breed %>
-    <p>Breed: <%= @pet.breed %></p><br>
-<% end %>
-<% if @pet.hobbies %>
-    <p>Hobbies: <%= @pet.hobbies %></p><br>
-<% end %>
-<p>Species: <%= @pet.species.name %></p><br>
-<% if @pet.birthdate %>
-    <p>Birthday: <%= @pet.birthday_formatted %></p><br>
-<% end %>
-<p>Owner: <%= link_to @pet.user.name, @pet.user %></p><br><br>
+<div class= "post-container">
+    <h3><%= @pet.name %></h3><br>
+    <% if @pet.image %>
+        <p><%= image_tag @pet.image, class: "post-img" %></p>
+    <% end %>
+    <p>Age: <%= @pet.age %></p><br>
+    <% if @pet.breed %>
+        <p>Breed: <%= @pet.breed %></p><br>
+    <% end %>
+    <% if @pet.hobbies %>
+        <p>Hobbies: <%= @pet.hobbies %></p><br>
+    <% end %>
+    <p>Species: <%= @pet.species.name %></p><br>
+    <% if @pet.birthdate %>
+        <p>Birthday: <%= @pet.birthday_formatted %></p><br>
+    <% end %>
+    <p>Owner: <%= link_to @pet.user.name, @pet.user %></p><br><br>
 
-<% if @pet.user.id == current_user.id %>
-    <%= button_to "Edit", edit_pet_path, method: :get %><br>
-    <%= button_to "Delete", @pet, method: :delete %>
-<% end %>
+    <% if @pet.user.id == current_user.id %>
+        <%= button_to "Edit", edit_pet_path, method: :get %><br>
+        <%= button_to "Delete", @pet, method: :delete %>
+    <% end %>
+</div>
