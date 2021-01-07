@@ -1,3 +1,12 @@
+<div class="row">
+    <div class="col-sm-12">
+    <div class="panel panel-default text-left">
+        <div class="panel-body">
+        <%= button_to "Create Post", new_post_path, method: :get %>
+        </div>
+    </div>
+    </div>
+</div>
 
 <% @posts.each do |post| %>
 <div class="row">

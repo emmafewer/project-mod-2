@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     before_action :set_user, only: [:edit, :update, :destroy]
-    layout "non_post"
+    layout "post"
 
     def index
         @users = User.all

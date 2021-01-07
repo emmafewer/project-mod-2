@@ -1,6 +1,6 @@
 class PetsController < ApplicationController
     before_action :set_pet, only: [:show, :edit, :update, :destroy]
-    layout "non_post"
+    layout "post"
     def index
         @pets = Pet.all
     end
