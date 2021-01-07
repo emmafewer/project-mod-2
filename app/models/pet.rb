@@ -45,4 +45,8 @@ class Pet < ApplicationRecord
     Pet.all.count{|pet| pet.species.name == Pet.most_common_species.species.name}
   end
 
+  def birthday_formatted
+    self.birthdate.to_formatted_s(:long_ordinal)
+  end
+
 end

@@ -4,23 +4,25 @@
     <% end %>
 <% end %>
 
-<%= form_with model: @pet do |f| %>
-    <%= f.label :name %>
+
+
+<%= bootstrap_form_with model: @pet, bootstrap: { layout: "horizontal" } do |f| %>
+    
     <%= f.text_field :name %>
-    <br><br>
-    <%= f.label :age %>
+
     <%= f.number_field :age, in: 1...100 %>
-    <br><br>
-    <%= f.label :breed %>
+
     <%= f.text_field :breed %>
-    <br><br>
-    <%= f.label :hobbies %>
-    <%= f.text_area :hobbies %>
-    <br><br>
+
+    <%= f.label :species %>
     <%= f.collection_select :species_id, @species, :id, :name%>
-    <%#= fields_for :species do |ff| %>
-        <%#= ff.text_field :name %>
-    <%# end %>
-    <br><br>
+
+    <%= f.text_area :hobbies, placeholder: "Playing fetch, batting yarn, etc...."  %>
+
+    <%= f.url_field :image, placeholder: "Enter image url here...."  %>
+
+    <%= f.datetime_field :birthdate, control_col_class: "col-sm-4" %>
+
     <%= f.submit %>
 <% end %>
+
