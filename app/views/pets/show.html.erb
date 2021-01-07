@@ -1,8 +1,12 @@
 <h3><%= @pet.name %></h3><br>
+<% if @pet.image %>
+    <p><%= image_tag @pet.image, class: "img-fluid" %></p>
+<% end %>
 <p>Age: <%= @pet.age %></p><br>
 <p>Breed: <%= @pet.breed %></p><br>
 <p>Hobbies: <%= @pet.hobbies %></p><br>
 <p>Species: <%= @pet.species.name %></p><br>
+<p>Birthday: <%= @pet.birthday_formatted %></p><br>
 <p>Owner: <%= link_to @pet.user.name, @pet.user %></p><br><br>
 
 <% if @pet.user.id == current_user.id %>

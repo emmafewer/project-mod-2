@@ -3,9 +3,14 @@
     <% @pets.each do |pet| %>
     <div class="col-sm-12">
         <div class="well">
+            <% if pet.image %>
+                <p><%= image_tag pet.image, class: "img-fluid" %></p>
+            <% end %>
             <p>Name: <%= link_to pet.name, pet %></p>
-            <p>Species: <%= pet.species.name %></p>
             <p>Age: <%= pet.age %></p>
+            <% if pet.birthdate %>
+                <p>Birthday: <%= pet.birthday_formatted %></p><br>
+            <% end %>
             <p>Owner: <%= link_to pet.user.name, show_user_path(pet.user) %></p>
         </div>
     </div>
