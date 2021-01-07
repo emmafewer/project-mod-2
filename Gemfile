@@ -34,10 +34,6 @@ gem "comfy_bootstrap_form", "~> 4.0.0"
 
 gem 'devise'
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 3d4119cf178dcf230f6f5dfdabe6bce0a9bd3858
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
