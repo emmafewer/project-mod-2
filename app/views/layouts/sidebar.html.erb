@@ -1,10 +1,10 @@
 <div class="well">
     <% if current_user.image %>
         <%= image_tag current_user.image, class: "img-circle", height:"100", width:"100", alt:"Avatar"%>
-    <% end %>
-    <p><%= link_to "View Users", users_path %></p>
+    <% end %><br><br>
     <p><%= link_to "View Profile", show_user_path(current_user)%></p>
-        <p>Pets</p>
+    <p><%= link_to "View All Users", users_path %></p>
+    <p><%= link_to "View All Pets", users_path %></p>
         <p>About</p>
     </div>
     <% if current_user.complete_profile %>

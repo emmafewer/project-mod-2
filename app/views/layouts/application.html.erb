@@ -27,18 +27,20 @@
     <div class="navbar-header">
       <%= link_to "PetBook", posts_path, class: "navbar-brand"%>
     </div>
-    <div class="collapse navbar-collapse">
-        <% if user_signed_in? %>
-          <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to 'Profile', edit_user_registration_path, :class => "btn-default"%></li>
-            <li><%= link_to 'Log-out', destroy_user_session_path, method: :delete, :class => "glyphicon glyphicon-log-out" %></li>
-          </ul>
-        <% else %>
-          <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to 'Log In', new_user_session_path, :class => "btn-default" %></li>
-            <li><%= link_to 'Sign Up', new_user_registration_path, :class => "btn-default" %></li>
-          </ul>
-        <% end %>
+
+    <div class="collapse navbar-collapse" id="myNavbar">
+      
+      <% if user_signed_in? %>
+        <div class="navbar-brand">      
+         <h5>Welcome, <%= current_user.name %></h5>
+        </div>
+      <% else %>
+      <ul>
+          <li><a href="/users/sign_in"><span class="glyphicon glyphicon-log-in"></span> Log in</a></li>
+          <li><a href="/users/sign_up"><span class="glyphicon glyphicon-user"></span> Sign up</a></li>
+      <% end %>     
+      </ul>
+
     </div>
   </div>
 </nav>
