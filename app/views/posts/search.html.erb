@@ -1,3 +1,4 @@
+<h1>Search Results</h1>
 
 <% @posts.each do |post| %>
 <div class="row">
@@ -10,7 +11,6 @@
         </div>
     </div>
     <div class="col-sm-9">
-
           <div class="well">
             <% if post.image %>
                 <%= link_to post do %>
@@ -18,25 +18,48 @@
                 <% end %>
             <% end %>
             <p><%= link_to post.content, post %></p>
-            <br>
-            <%= bootstrap_form_for [post, @comment], bootstrap: {layout: "horizontal"} do |f| %>
-                <%= f.text_area :content, placeholder: "Add a comment...", bootstrap: {label: "Comment"} %>          
-                <%= f.submit "Post Comment", bootstrap: {layout: "vertical"}%>
-            <% end %>
             <br><br>
-
             <%= button_to "Like", add_likes_path(post), :method => :patch, :class => "btn-info"  %>
             <br>
             <h5>Likes: <%= post.likes %></h5><br>
-            
             <h4>Comments</h4>
             <% post.comments.each do |comment| %>
                 <div class="well well-sm">
                     <p><%= comment.user.name %> said: <%= comment.content %></p>
                 </div>
             <% end %>
-
           </div>
     </div>
 </div>
 <% end %>
+
+<div class="row">
+    <% @users.each do |user| %>
+    <div class="col-sm-3">
+        <div class="well">
+            <% if user.image %>
+              <%= image_tag user.image, class: "img-circle", height:"65", width:"65", alt:"Avatar"%>
+            <% end %>
+            <p><%= link_to user.name, user %></p>
+            <p><%= user.bio %></p>
+            <p>Number of pets: <%= user.pet_count %></p>
+            <% user.species_count.each do |k, v| %>  
+                    <p><%= k %>: <%= v %></p>
+            <% end %>
+        </div>
+    </div>
+    <% end %>
+</div>
+
+<div class="row">
+    <% @pets.each do |pet| %>
+    <div class="col-sm-12">
+        <div class="well">
+            <p>Name: <%= link_to pet.name, pet %></p>
+            <p>Species: <%= pet.species.name %></p>
+            <p>Age: <%= pet.age %></p>
+            <p>Owner: <%= link_to pet.user.name, show_user_path(pet.user) %></p>
+        </div>
+    </div>
+    <% end %>
+</div>

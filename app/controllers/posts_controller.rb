@@ -5,11 +5,14 @@ class PostsController < ApplicationController
 
     def index
         @posts = Post.all
-        if params[:user_id]
-            @user = User.where('name LIKE ?', "%#{params[:user_id]}%")
-        end
         @users = User.all
         @comment = Comment.new 
+    end
+
+    def search
+        @posts = Post.all.where("content LIKE ?", "%" + params[:q] + "%")
+        @users = User.all.where("name LIKE ?", "%" + params[:q] + "%")
+        @pets = Pet.all.where("name LIKE ?", "%" + params[:q] + "%")
     end
 
     def show 
