@@ -1,9 +1,9 @@
 <div class="row">
     <% @users.each do |user| %>
-    <div class="col-sm-3">
-        <div class="well">
+    <div class="col-sm-4">
+        <div class="sm-profile-container">
             <% if user.image %>
-              <%= image_tag user.image, class: "img-circle", height:"65", width:"65", alt:"Avatar"%>
+              <%= image_tag user.image, class: "post-img", alt:"Avatar"%>
             <% end %>
             <p><%= link_to user.name, user %></p>
             <p><%= user.bio %></p>
@@ -15,5 +15,7 @@
     </div>
     <% end %>
 </div>
+
+
 
 

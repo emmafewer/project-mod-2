@@ -1,6 +1,6 @@
 <div class="row"> 
     <div class="col-sm-12">
-        <div class="well well-lg">
+        <div class="post-container">
             <div class="col-sm-12">
                 <% if @user.image %>
                     <%= image_tag @user.image, class: "img-circle", height:"65", width:"65", alt:"Avatar"%>
@@ -33,9 +33,25 @@
 <div class="row">
     <div class="col-sm-12">
         <% @user.posts.each do |post| %>
-            <div class="well">
-                <%= image_tag post.image, class: "img-fluid" %>
-                <%= post.content %>
+            <div class="post-container">
+                 <div class="post-content-box">
+                     <p><%= post.content %></p>
+                </div> 
+                <%= link_to post do %>
+                    <%= image_tag post.image, class: "post-img" %>
+                <% end %>
+               <br>
+                <%= bootstrap_form_for [post, @comment], bootstrap: {layout: "vertical"} do |f| %>
+                    <%= f.text_area :content, placeholder: "Add a comment...", bootstrap: {label: {hide: true}} %>          
+                    <%= f.submit "Post Comment", bootstrap: {layout: "vertical"}%>
+                <% end %>
+                <div class="post-comment-box">
+                    <h4>Comments</h4>
+                    <% post.comments.each do |comment| %>                      
+                        <p><%= comment.user.name %> said: <%= comment.content %></p>                    
+                    <% end %>
+                </div>
+                <%= button_to "Like", add_likes_path(post), :method => :patch, :class => "btn btn-info"  %> <h5>Likes: <%= post.likes %></h5>
             </div> 
         <% end %>
     </div>        

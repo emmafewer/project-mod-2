@@ -6,6 +6,8 @@ class User < ApplicationRecord
     has_many :pets, :dependent => :destroy
     has_many :posts, :dependent => :destroy
     has_many :comments
+    validates_presence_of :name
+    validates :bio, length: {maximum: 80}
 
     def pet_count
         self.pets.size

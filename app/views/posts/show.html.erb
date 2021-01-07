@@ -1,27 +1,26 @@
 <div class="col-sm-12">
-    <div class="well">
-    <% if @post.image %>
-        <p><%= image_tag @post.image, class: "img-fluid" %></p>
-    <% end %>
-    <p><%= @post.content %></p>
-    <br>
-
-    <%= bootstrap_form_for [@post, @comment], bootstrap: {layout: "horizontal"} do |f| %>
-        <%= f.text_area :content, placeholder: "Add a comment...", bootstrap: {label: "Comment"} %>         
-        <%= f.submit "Post Comment", bootstrap: {layout: "vertical"}%>
-    <% end %>
-    <br><br>
-    
-    <%= button_to "Like", add_likes_path(@post), :method => :patch, :class => "btn-info"  %>
-    <br>
-    <h5>Likes: <%= @post.likes %></h5><br>
-
-    <h4>Comments</h4>
-    <% @post.comments.each do |comment| %>
-        <div class="well well-sm">
-            <p><%= comment.user.name %> said: <%= comment.content %></p>
+    <div class="post-inner-box">
+        <div class="post-content-box">
+            <p><%= @post.content %></p>
+        </div> 
+        <% if @post.image %>
+            <%= link_to @post do %>
+                <p><%= image_tag @post.image, class: "post-img" %></p>
+            <% end %>
+        <% end %>
+        
+        <br>
+        <%= bootstrap_form_for [@post, @comment], bootstrap: {layout: "vertical"} do |f| %>
+            <%= f.text_area :content, placeholder: "Add a comment...", bootstrap: {label: {hide: true}} %>          
+            <%= f.submit "Post Comment", bootstrap: {layout: "vertical"}%>
+        <% end %>
+        <div class="post-comment-box">
+            <h4>Comments</h4>
+            <% @post.comments.each do |comment| %>                      
+                <p><%= comment.user.name %> said: <%= comment.content %></p>                    
+            <% end %>
         </div>
-    <% end %>
+        <%= button_to "Like", add_likes_path(@post), :method => :patch, :class => "btn-info"  %> <h5>Likes: <%= @post.likes %></h5>
     </div>
 </div>
 
