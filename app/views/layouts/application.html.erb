@@ -25,13 +25,9 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
       <%= link_to "PetBook", posts_path, class: "navbar-brand"%>
     </div>
+
     <div class="collapse navbar-collapse" id="myNavbar">
       
       <% if user_signed_in? %>
@@ -39,24 +35,12 @@
          <h5>Welcome, <%= current_user.name %></h5>
         </div>
       <% else %>
-        <ul>
+      <ul>
           <li><a href="/users/sign_in"><span class="glyphicon glyphicon-log-in"></span> Log in</a></li>
           <li><a href="/users/sign_up"><span class="glyphicon glyphicon-user"></span> Sign up</a></li>
-      <% end %>
-
-      <form class="navbar-form navbar-right" role="search">
-        <div class="form-group input-group">
-          <input type="text" class="form-control" placeholder="Search..">
-          <span class="input-group-btn">
-            <button class="btn btn-sm" type="button">
-              <span class="glyphicon glyphicon-search"></span>
-            </button>
-          </span>        
-        </div>
-      </form>
-      <ul class="nav navbar-nav navbar-right">
-        
+      <% end %>     
       </ul>
+
     </div>
   </div>
 </nav>
