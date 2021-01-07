@@ -23,21 +23,20 @@
 
   <body>
 
-<%= render template: "layouts/nav_bar" %>
-<div class="container text-center">    
-  <div class="row">
-    <div class="col-sm-3 well">
-      <%= render template: "layouts/sidebar" %>
-      <div class="col-sm-9">
-          <%= yield %>     
+    <%= render template: "layouts/nav_bar" %>
+    <div class="container text-center">    
+      <div class="row" id="main_container">
+        <%= render template: "layouts/sidebar" %>
+          <div class="col-sm-9">
+              <%= yield %>     
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
-<footer class="container-fluid text-center">
-  <p>Footer Text</p>
-</footer>
+    <footer class="container-fluid text-center">
+      <p>Footer Text</p>
+    </footer>
    
   </body>
 </html>
