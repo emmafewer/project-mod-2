@@ -7,28 +7,25 @@
             <li><%= link_to "View Profile", show_user_path(current_user)%></li>
             <li><%= link_to "View All Users", users_path %></li>
             <li><%= link_to "View All Pets", pets_path %></li>
-            <li>About</li>
+            <li><%= link_to "How to Link Images", about_path %></li>
         </ul>
         <% if current_user.complete_profile %>
-        <div class="alert alert-info fade in">
+        <div class="alert alert-warning fade in">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-            <p><strong>Aww! Your profile is incomplete.</strong></p>
-            Please complete your profile
+            Aww! Your profile is incomplete. Please complete your profile
             <%= link_to "here", edit_user_registration_path(current_user) %>
         </div>
         <% end %>
         <% if current_user.no_pet %>
-        <div class="alert alert-info fade in">
+        <div class="alert alert-warning fade in">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-            <p><strong>Oh no!</strong></p>
-            Looks like you have no pets<br>
+            Oh no! Looks like you have no pets<br>
             <%= link_to "Add a pet", new_pet_path %>
         </div>
         <% end %>
         <% if current_user.post_alert_criteria > 2 %>
-        <div class="alert alert-info fade in">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-            <p><strong>Ey!</strong></p>
+        <div class="alert alert-warning fade in">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>            
             You haven't posted since <%= current_user.last_post %> .. Post now!
         </div>
         <% end %>
