@@ -11,8 +11,8 @@
         
         <br>
         <%= bootstrap_form_for [@post, @comment], bootstrap: {layout: "vertical"} do |f| %>
-            <%= f.text_area :content, placeholder: "Add a comment...", bootstrap: {label: {hide: true}} %>          
-            <%= f.submit "Post Comment", bootstrap: {layout: "vertical"}%>
+            <%= f.text_area :content, placeholder: "Add a comment...", bootstrap: {label: {hide: true}}, class: "input-text-area" %>          
+            <%= f.primary "Post Comment", bootstrap: {layout: "vertical"}%><br>
         <% end %>
         <div class="post-comment-box">
             <h4>Comments</h4>
@@ -20,11 +20,12 @@
                 <p><%= comment.user.name %> said: <%= comment.content %></p>                    
             <% end %>
         </div>
-        <%= button_to "Like", add_likes_path(@post), :method => :patch, :class => "btn-info"  %> <h5>Likes: <%= @post.likes %></h5>
+        <%= button_to "Like", add_likes_path(@post), :method => :patch, :class => "btn btn-primary"  %> <h5>Likes: <%= @post.likes %></h5><br>
+
+        <% if @post.user_id == current_user.id %>
+            <%= button_to "Edit Post", edit_post_path, method: :get, class: "btn btn-warning" %><br>
+            <%= button_to "Delete Post", @post, method: :delete, class: "btn btn-danger" %><br>
+        <% end %>
+
     </div>
 </div>
-
-<% if @post.user_id == current_user.id %>
-    <%= button_to "Edit Post", edit_post_path, method: :get %><br>
-    <%= button_to "Delete Post", @post, method: :delete %><br>
-<% end %>
