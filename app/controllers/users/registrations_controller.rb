@@ -17,7 +17,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
 
     def account_update_params
-        render :layout => "post"
         params.require(resource_name).permit(:email, :password, :password_confirmation, :current_password, :name, :bio, :image)
     end
 end
