@@ -9,6 +9,7 @@
             <li><%= link_to "View All Pets", pets_path %></li>
             <li><%= link_to "How to Link Images", about_path %></li>
         </ul>
+        <br><br>
         <% if current_user.complete_profile %>
         <div class="alert alert-warning fade in">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
@@ -29,6 +30,7 @@
             You haven't posted since <%= current_user.last_post %> .. Post now!
         </div>
         <% end %>
+        <br>
         <% if !Pet.all.empty? %>
             <h5>Did you know?!</h5>
             <p><%= link_to Pet.oldest.name, pet_path(Pet.oldest) %> is the oldest pet at <%= Pet.oldest.age %>!</p>

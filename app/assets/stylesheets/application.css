@@ -50,7 +50,8 @@ footer {
 }
 
 #sidebar ul.components {
-  padding: 0; }
+  padding: 0; 
+  font-weight: 700;}
 #sidebar ul li {
   font-size: 16px; }
 #sidebar ul li > ul {
@@ -64,6 +65,26 @@ footer {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
 #sidebar ul li a:hover {
   color: #f8b739; }
+
+#sidebar h5{
+  font-size: 22px;
+  font-family: 'Dosis', sans-serif;
+  font-weight: bold;
+  font-style: italic;
+}
+
+div.alert {
+  font-size: 14px;
+  font-family: 'Dosis', sans-serif;
+  font-weight: bold;
+}
+/* 
+div.alert a{
+  font-size: 14px;
+  font-family: 'Dosis', sans-serif;
+  font-weight: bold;
+  color: black;
+} */
 
 #sidebar a {
   color: #88c7ff;
@@ -91,7 +112,8 @@ footer {
   color: #e0e7ff;
   border-radius: 4px;
   -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
-  box-shadow: inset 0 1px 1px rgba(0,0,0,.05);}
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+}
 
 .sm-pet-container {
   height: 450px;
