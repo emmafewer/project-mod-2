@@ -1,5 +1,5 @@
 <%= bootstrap_form_with model: @post, bootstrap: { layout: "horizontal" } do |f| %>
-    <%= f.text_area :content, placeholder: "Type post here..."  %>
-    <%= f.url_field :image, placeholder: "Enter image url here...." %>
-    <%= f.submit 'Post' %>
+    <%= f.text_area :content, placeholder: "Type post here...", class: "login-field"  %>
+    <%= f.url_field :image, placeholder: "Enter image url here....", class: "login-field" %>
+    <%= f.primary 'Post'%>
 <% end %> 

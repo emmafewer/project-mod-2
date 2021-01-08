@@ -8,21 +8,21 @@
 
 <%= bootstrap_form_with model: @pet, bootstrap: { layout: "horizontal" } do |f| %>
     
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: "login-field" %>
 
-    <%= f.number_field :age, in: 1...100 %>
+    <%= f.number_field :age, in: 1...100, class: "login-field"%>
 
-    <%= f.text_field :breed %>
+    <%= f.text_field :breed, class: "login-field" %>
 
-    <%= f.label :species %>
-    <%= f.collection_select :species_id, @species, :id, :name%>
+    <%= f.label :species%>
+    <%= f.collection_select :species_id, @species, :id, :name, bootstrap: {disabled: true}%>
 
-    <%= f.text_area :hobbies, placeholder: "Playing fetch, batting yarn, etc...."  %>
+    <%= f.text_area :hobbies, placeholder: "Playing fetch, batting yarn, etc...." , class: "login-field" %>
 
-    <%= f.url_field :image, placeholder: "Enter image url here...."  %>
+    <%= f.url_field :image, placeholder: "Enter image url here....", class: "login-field"  %>
 
-    <%= f.date_field :birthdate, control_col_class: "col-sm-4" %>
+    <%= f.date_field :birthdate, control_col_class: "col-sm-4", class: "login-field" %>
 
-    <%= f.submit %>
+    <%= f.primary %>
 <% end %>
 
