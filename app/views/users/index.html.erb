@@ -3,7 +3,7 @@
     <div class="col-sm-4">
         <div class="sm-profile-container">
             <% if user.image %>
-              <%= image_tag user.image, class: "post-img", alt:"Avatar"%>
+              <%= image_tag user.image, class: "profile-img", alt:"Avatar"%>
             <% end %>
             <p><%= link_to user.name, user %></p>
             <p><%= user.bio %></p>
