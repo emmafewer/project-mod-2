@@ -12,6 +12,10 @@ class PostsController < ApplicationController
         @comment = Comment.new 
     end
 
+    def about
+
+    end
+
     def search
         @posts = Post.all.where("lower(content) LIKE ?", "%" + params[:q].downcase + "%")
         @users = User.all.where("lower(name) LIKE ?", "%" + params[:q].downcase + "%")

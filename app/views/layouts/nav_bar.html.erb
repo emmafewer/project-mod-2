@@ -11,8 +11,8 @@
         </button>
     </form>
         <% if user_signed_in? %>
-            <div class="navbar-brand">      
-                <h5>Welcome, <%= current_user.name %></h5>
+            <div class="nav navbar-nav navbar-left">
+                <p class="navbar-brand mb-2">Welcome, <%= current_user.name%></p>      
             </div>
             <ul class="nav navbar-nav navbar-right">
                 <li><%= link_to ' Profile', edit_user_registration_path, :class => "glyphicon glyphicon-user"%></li>

@@ -19,6 +19,6 @@ Rails.application.routes.draw do
   resources :users
 
   get '/search', to: "posts#search"
-
+  get '/about', to: "posts#about"
   
 end
