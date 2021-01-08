@@ -17,9 +17,9 @@ class PostsController < ApplicationController
     end
 
     def search
-        @posts = Post.all.where("content LIKE ?", "%" + params[:q] + "%")
-        @users = User.all.where("name LIKE ?", "%" + params[:q] + "%")
-        @pets = Pet.all.where("name LIKE ?", "%" + params[:q] + "%")
+        @posts = Post.all.where("lower(content) LIKE ?", "%" + params[:q].downcase + "%")
+        @users = User.all.where("lower(name) LIKE ?", "%" + params[:q].downcase + "%")
+        @pets = Pet.all.where("lower(name) LIKE ?", "%" + params[:q].downcase + "%")
     end
 
     def show 

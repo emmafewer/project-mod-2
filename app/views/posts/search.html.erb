@@ -1,44 +1,45 @@
 <h1>Search Results</h1>
 
 <% @posts.each do |post| %>
-<div class="row">
-    <div class="col-sm-3">
-        <div class="well">
-           <p><%= link_to post.user.name, show_user_path(post.user) %></p>
-            <% if post.user.image %>
-                <%= image_tag post.user.image, class: "img-circle", height:"100", width:"100", alt:"Avatar"%>
-            <% end %>
-        </div>
-    </div>
-    <div class="col-sm-9">
-          <div class="well">
-            <% if post.image %>
-                <%= link_to post do %>
-                    <p><%= image_tag post.image, class: "img-fluid" %></p>
+<div class="post-container">
+    <div class="row">
+        <div class="col-sm-3 ">
+            <div class="post-inner-box">
+            <p><%= link_to post.user.name, show_user_path(post.user) %></p>
+                <% if post.user.image %>
+                    <%= image_tag post.user.image, class: "img-circle", height:"100", width:"100", alt:"Avatar"%>
                 <% end %>
-            <% end %>
-            <p><%= link_to post.content, post %></p>
-            <br><br>
-            <%= button_to "Like", add_likes_path(post), :method => :patch, :class => "btn-info"  %>
-            <br>
-            <h5>Likes: <%= post.likes %></h5><br>
-            <h4>Comments</h4>
-            <% post.comments.each do |comment| %>
-                <div class="well well-sm">
-                    <p><%= comment.user.name %> said: <%= comment.content %></p>
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <div class="post-inner-box">
+                <div class="post-comment-box">
+                    <p><%= post.content %></p>
+                </div> 
+                <% if post.image %>
+                    <%= link_to post do %>
+                        <p><%= image_tag post.image, class: "post-img" %></p>
+                    <% end %>
+                <% end %>
+                <div class="post-comment-box">
+                    <h4>Comments</h4>
+                    <% post.comments.each do |comment| %>                      
+                        <p><%= comment.user.name %> said: <%= comment.content %></p>                    
+                    <% end %>
                 </div>
-            <% end %>
-          </div>
+                <%= button_to "Like", add_likes_path(post), :method => :patch, :class => "btn-info"  %> <h5>Likes: <%= post.likes %></h5>
+            </div>
+        </div>
     </div>
 </div>
 <% end %>
 
 <div class="row">
     <% @users.each do |user| %>
-    <div class="col-sm-3">
-        <div class="well">
+    <div class="col-sm-4">
+        <div class="sm-profile-container">
             <% if user.image %>
-              <%= image_tag user.image, class: "img-circle", height:"65", width:"65", alt:"Avatar"%>
+              <%= image_tag user.image, class: "post-img", alt:"Avatar"%>
             <% end %>
             <p><%= link_to user.name, user %></p>
             <p><%= user.bio %></p>
@@ -51,13 +52,20 @@
     <% end %>
 </div>
 
+
 <div class="row">
     <% @pets.each do |pet| %>
-    <div class="col-sm-12">
-        <div class="well">
+    <div class="col-sm-4">
+        <div class="sm-pet-container">
+            <% if pet.image %>
+                <p><%= image_tag pet.image, class: "post-img" %></p>
+            <% end %>
             <p>Name: <%= link_to pet.name, pet %></p>
             <p>Species: <%= pet.species.name %></p>
             <p>Age: <%= pet.age %></p>
+            <% if pet.birthdate %>
+                <p>Birthday: <%= pet.birthday_formatted %></p><br>
+            <% end %>
             <p>Owner: <%= link_to pet.user.name, show_user_path(pet.user) %></p>
         </div>
     </div>
