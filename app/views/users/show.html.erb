@@ -3,7 +3,7 @@
         <div class="post-container">
             <div class="col-sm-12">
                 <% if @user.image %>
-                    <%= image_tag @user.image, class: "img-circle", height:"65", width:"65", alt:"Avatar"%>
+                    <%= image_tag @user.image, class: "post-img", alt:"Avatar"%>
                 <% end %>
                 <h2><%= @user.name %></h2>
                 <% if @user.id == current_user.id %>
@@ -23,7 +23,7 @@
             
             <h5>Bio: <%= @user.bio %></h5><br>
             Pets: <% @user.pets.each do |pet| %>
-                <p><%= link_to pet.name, pet %></p>
+                <p><%= pet.species.name %>: <%= link_to pet.name, pet %></p>
             <% end %><br>
         </div>
     </div>
@@ -34,7 +34,7 @@
     <div class="col-sm-12">
         <% @user.posts.each do |post| %>
             <div class="post-container">
-                 <div class="post-content-box">
+                 <div class="post-comment-box">
                      <p><%= post.content %></p>
                 </div> 
                 <%= link_to post do %>

@@ -38,9 +38,15 @@
             <p><%= link_to Pet.youngest.name, pet_path(Pet.youngest) %> is the youngest pet at <%= Pet.youngest.age %>!</p>
             <p><%= link_to User.most_pets.name, user_path(User.most_pets) %> has the most pets at <%= User.most_pets.pet_count %>!</p>
             <p>Our class has the most <%= Pet.most_common_species.species.name %>s at <%= Pet.most_common_species_count %></p>
-            <p><%= Pet.most_unique_species.name %> is the only <%= Pet.most_unique_species.species.name %></p>
-            <p><%= Pet.most_common_name.name %> is the most common pet name</p>
-            <p><%= Pet.most_common_breed.breed %> is the most common breed for <%= Pet.most_common_breed.species.name %>s</p>
+            <% if Pet.most_unique_species_count == 1 %>
+                <p><%= Pet.most_unique_species.name %> is the only <%= Pet.most_unique_species.species.name %></p>
+            <% end %>
+            <% if Pet.check_name_count > 1 %>
+                <p><%= Pet.most_common_name.name %> is the most common pet name</p>
+            <% end %>
+            <% if Pet.check_breed_count > 1 %>
+                <p><%= Pet.most_common_breed.breed %> is the most common breed for <%= Pet.most_common_breed.species.name %>s</p>
+            <% end %>
             <br><br>
 
             <h5>See what's up!</h5>
@@ -49,9 +55,11 @@
             <p>Get in on <%= link_to "this convo!", post_path(Post.most_comments) %></p>
             <br><br>
             
-            <h5>Birthdays this month!</h5>
-            <% Pet.birthdays_this_month.each do |pet| %>
-                <p><%= pet.name %> has a birthday on <%= pet.birthdate.month %>/<%= pet.birthdate.day %> </p>
+            <% if Pet.birthdays_this_month != [] %>
+                <h5>Birthdays this month!</h5>
+                <% Pet.birthdays_this_month.each do |pet| %>
+                    <p><%= pet.name %> has a birthday on <%= pet.birthdate.month %>/<%= pet.birthdate.day %> </p>
+                <% end %>
             <% end %>
         <% end %>
     </div>

@@ -18,23 +18,24 @@ class Pet < ApplicationRecord
     self.all.max_by{|pet| pet.name}
   end
 
-  # def self.check_name_count
-  #   count = Pet.all.count(self.most_common_name.name)
-  #   if count > 1
-  #     self.most_common_name.name
-  #   end
-  # end
+  def self.check_name_count
+    self.all.count{|pet| Pet.most_common_name.name}
+  end
 
   def self.most_common_breed
     self.all.max_by{|pet| pet.breed}
   end
 
-  # def birthday
-
-  # end
+  def self.check_breed_count
+    self.all.count{|pet| pet.breed == Pet.most_common_breed}
+  end
 
   def self.most_unique_species
     Pet.all.min_by{|pet| pet.species.name}
+  end
+
+  def self.most_unique_species_count
+    Pet.all.count{|pet| pet.species.name == Pet.most_unique_species.species.name}
   end
 
   def self.most_common_species
@@ -46,7 +47,7 @@ class Pet < ApplicationRecord
   end
 
   def birthday_formatted
-    self.birthdate.to_formatted_s(:long_ordinal)
+    self.birthdate.strftime('%B %dth, %Y')
   end
 
   def self.birthdays_this_month
