@@ -4,7 +4,7 @@ class Pet < ApplicationRecord
   has_many :posts, through: :users
 
   validates_presence_of :name
-  validates :age, numericality: {greater_than: 0}
+  validates :age, numericality: {greater_than_or_equal_to: 0}
 
   def self.oldest
     self.all.max_by{|pet| pet.age}
