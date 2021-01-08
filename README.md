@@ -19,3 +19,5 @@ A pet profile can then be created for that user. A pet profile will need a name 
 ### Using Good Pets
 
 The main page of Good Pets will have all the posts made, sorted by most recent. From there a user can like or comment a post. They can also create their own post with an image and a description. Users have the ability to edit or delete their own profiles, their pet profiles, and their posts.
+
+### Created by David Wisecarver and Emma Fewer
